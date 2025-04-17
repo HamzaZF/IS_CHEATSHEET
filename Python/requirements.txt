@@ -1,0 +1,5 @@
+adafruit-circuitpython-bme280
+adafruit-blinka
+connexion[flask,swagger-ui,uvicorn]
+paho-mqtt
+RPi.GPIO

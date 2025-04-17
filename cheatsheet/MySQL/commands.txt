@@ -1,0 +1,7 @@
+mysql -u root -p (root:hamzatse1957)
+
+CREATE DATABASE IF NOT EXISTS AIOT_DB; 
+USE AIOT_DB;
+
+SOURCE mysql.txt;
+

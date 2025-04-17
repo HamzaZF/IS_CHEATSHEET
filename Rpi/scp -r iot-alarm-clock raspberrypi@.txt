@@ -1,0 +1,2 @@
+scp -r iot-alarm-clock raspberrypi@192.168.137.32:/home/pi/Desktop/test_proje
+ct_07_04_2025

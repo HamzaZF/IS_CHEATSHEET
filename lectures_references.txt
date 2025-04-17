@@ -1,0 +1,133 @@
+Read lectures 00, 01, 02 and 03 the day before
+
+
+Lecture 04:
+- 9 -> Diff between S-B Microcontroller and S-B Computer
+- 12 -> Overview Microbit (buttons, Bluetooth antenna, …)
+- 13 -> Features of Microbit
+- 15 -> sensors of Microbit
+- 21 -> Microbit perform non-preemptive multitasking
+- 32 -> JS Types
+- 43 -> Sensors inputs
+- 49 -> Radio limitations
+- 58 -> radio.receivedPacket properties
+
+Lecture 05:
+- 16 -> microbit's small pins
+- 23 -> connect a speaker via GPIO
+- 25 -> Serial Communication (USB) (using putty?? (in lecture 7 we use pi))
+- 31 -> serial communication (GPIO) (microbit to microbit)
+- 34 -> edge connector
+- 36 -> trigger buttons via GPIO
+- 39 -> control a led via a button (pins.digitalWritePin(DigitalPin.P2, 1))
+- 46 -> control a grove led module (pins.digitalWritePin(DigitalPin.P2, 1))
+- 49 -> Microbit's ADC (10 bits resolution, Available through Pins 0 to 4)
+- 51 -> Light sensor (LM358), (pins.analogReadPin(AnalogPin.P1))
+- 54 -> Rotary angle sensor (a potentiometer, outputs variable analogue signal(0 - 3.3V)), (pins.analogReadPin(AnalogPin.P1))
+- 55 -> Gesture sensor (grove.onGesture(GroveGesture.Up, () => { basic.showString("Up"); })), grove.init(), I2C so (slide 57)
+- 58 -> Ultrasonic Ranger (grove.measureInCentimeters(DigitalPin.P0))
+
+Lecture 06:
+- 28 -> T-cobbler
+- 31/32 -> GPIO Layout
+- 33 -> Types of GPIO (I2C, UART, ...)
+- 41 -> LED blinker
+- 44 -> Push button
+- 47 -> detect push button state (pull up technique)
+- 53 -> control led with push button
+- 61 -> Heart Rate Sensor
+- 66 -> MCP3008 ADC for the PI
+- 69 -> Potentiometer
+- 73 -> PWM (Pulse-Width Modulation)
+- 79 -> Bosch BME280 sensor (compatible I2C or SPI)
+
+Lecture 07:
+- 16 -> installation bluetooth protocol stack library (BlueZ)
+- 18 -> use Bluetooth communication Microbit-RaspPI
+- 28 -> installation of Gattlib library
+- 29 -> access GATT information from BLE of the microbit using gattool
+- 34 -> Bluetooth Temperature Service (from microbit via Bluetooth)
+- 37 -> Bluetooth Magnetometer Service (from microbit via Bluetooth)
+- 39 -> Bluetooth UART Service (allows another device to exchange any data it wants to with the microbit); it's the Bluetooth version of UART protocol (serial)
+- 42 -> Bluetooth UART service example (delimiter, command, ...)
+- 52 -> Serial Communication Over USB (list available ports, ...)
+- 55 -> Use RPI as a hub (send command to one microbit connected via serial and this latter send the command to all the slaves (microbits)
+- 56 -> Rasp Pi Camera
+- 60 -> Passive Infrared (PIR) Motion Sensor
+- 63 -> Security Camera (PIR motion sensor + Rasp Pi Camera)
+
+Lecture 08:
+- 15 -> SOAP Web Services
+- 16 -> Restful Web Services
+- 21 -> Flask (routing)
+- 22 -> Flask (variables)
+- 23 -> Flask (variables types)
+- 24 -> Flask (HTTP methods)
+- 26 -> Flask (Static folder and static files)
+- 29 -> Flask (rendering templates (eg. return an index.html file to be displayed in the client browser)
+- 30 -> Flask (session state management)
+- 32 -> Flask (build RESTful web services using swagger and connexion)
+- 36 -> Flask (Swagger configuration file)
+- 45 -> Swagger UI
+- 47 -> Full CRUD example using Swagger & Connexion & Flask
+- 49 -> Test with postman
+- 50 -> Test with Python
+- 55 -> Ambient Temperature Case Study
+
+Lecture 09:
+- 11 -> Summary of techniques for data mining (Prediction, Association, Segmentation)
+- 14 -> Classification
+- 16 -> Clustering
+- 26 -> Series schema
+- 27 -> Series
+- 34 -> Dataframe schema
+- 38 -> Defining Dataframe from a Dict
+- 40 -> iloc vs loc
+- 42 -> add/sub/div/mul Dataframe
+- 43 -> sum/mean/describe Dataframe
+- 44 -> Import Dataset
+- 46 -> Drop/Manipulation of columns
+- 49 -> Matplotlib Architecture Schema
+- 50 -> Matplotlib visualization schema (Figure, Axes, Axis)
+- 51 -> Matplotlib Hierarchy (Figure, Axes, Y-ticks, ...)
+- 52 -> pyplot example
+- 54 -> Plot via Dataframe
+- 55 -> if need to customize more the plot of the dataframe
+- 56 -> Bar Plot
+- 57 -> Box Plot
+- 61 -> Box Plot with categorization (e.g. by Gender)
+- 63 -> Histogram
+- 64 -> Histogram with categorization (e.g. by Gender)
+- 65 -> Pie Chart
+- 66 -> Scatter Plot
+- 67 -> Scatter Plot example (Iris Flower Dataset)
+
+Lecture 10:
+- 14 -> Simple Linear regression example
+- 17 -> Is the regression model good?
+- 20 -> Q-Q Plot (to check the normality of the residuals)
+- 25 -> Example of a Multiple Linear Regression
+- 29 -> Residual Analysis of a Multiple Linear Regression
+- 32 -> Detect multicollinearity among predictive variables (multiple linear relationships)
+- 35 -> Taxonomy of data
+- 38 -> Treatment of Categorical Independent variables
+- 39 -> Data encoding example with multiple linear regression (categorical->nominal data) (HDBs)
+- 41 -> Data encoding example with multiple linear regression (categorical->ordinal data) (Degree)
+- 43 -> Code example of data encoding (categorical independent variable) + Multiple Linear Regression
+- 52 -> Gini Index
+- 54 -> Example of Gini Index computation in case of numerical values
+- 62 -> Decision Tree in Scikit-learn (Cannot process categorical independent variables. We need to recode them if any).
+- 62 -> One-hot encoding for categorical variables to be used un decision tree using scikit-learn
+
+Lecture 11:
+- 9 -> Logistic regression explanation
+- 18 -> Logistic regression example
+- 25 -> SVM Schema
+- 33 -> Hyperparameter Tuning for SVM
+- 37 -> SVM Example Iris Flower Dataset (with grid-search and without)
+- 44 -> Random Forest Classifier example (Iris Flower Dataset)
+- 57 -> K-means algorithm step by step
+- 61 -> Clustering example (K-means) (Iris Flower Dataset)
+- 62 -> Silhouette Clustering
+- 63 -> Identify the characteristics of observations in each cluster
+

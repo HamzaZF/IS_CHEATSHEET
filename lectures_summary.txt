@@ -1,0 +1,27 @@
+Lecture 5:
+- 0, 1 & 2: GPIO with ADC
+- input.onPinPressed(TouchPin.P0, ()=>{}) (one finger has to be connected to GND pin)
+
+Lecture 06:
+- Raspberry has bi-directional GPIOs
+- RPi.GPIO library
+- Microbit : no need to specify input or output for gpio (we use WritePin and ReadPin) but in rasp we need to specify this
+- Rasp's gpios are digital pins (low or high only). Need to use an ADC to read the value of analogue input devices such as potentiometers
+- Rasp does not have an on-board ADC (microbit has one). Need to place MCP3008 ADC on the breadboard
+- The analogue values are communicated to the Rasp using the SPI Protocol, need to enable SPI
+
+Lecture 07:
+- Don't forget to use version 2 of makecode and to disable pairing (enable "no pairing required") when you work with bluetooth
+- Bluetooth UART allows to exchange a maximum of 20 bytes of data at a time in either direction
+
+Lecture 08:
+- 
+
+
+Silhouette Score:
+
+    - Closer to 1 → well-separated, dense clusters
+
+    - ~0 → overlapping clusters
+
+    - < 0 → points may be in the wrong cluster

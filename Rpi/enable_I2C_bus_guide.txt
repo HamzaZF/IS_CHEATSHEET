@@ -1,0 +1,9 @@
+sudo raspi-config
+Go to: Interface Options > I2C > Enable
+sudo reboot
+
+
+After reboot, run:
+ls /dev/i2c*
+You should see something like:
+/dev/i2c-1

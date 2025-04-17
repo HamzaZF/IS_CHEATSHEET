@@ -1,0 +1,9 @@
+
+# Copy a single file to the Pi
+scp C:\Users\User\file.txt pi@192.168.1.10:/home/pi/
+
+# Copy a local directory (recursively) to the Pi
+scp -r "C:\My Projects" pi@rpi.local:/home/pi/projects/
+
+# Copy a file from the Pi back to Windows
+scp pi@192.168.1.10:/home/pi/data.zip C:\Users\User\Downloads\

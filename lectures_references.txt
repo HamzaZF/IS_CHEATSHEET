@@ -51,7 +51,7 @@ Lecture 07:
 - 39 -> Bluetooth UART Service (allows another device to exchange any data it wants to with the microbit); it's the Bluetooth version of UART protocol (serial)
 - 42 -> Bluetooth UART service example (delimiter, command, ...)
 - 52 -> Serial Communication Over USB (list available ports, ...)
-- 55 -> Use RPI as a hub (send command to one microbit connected via serial and this latter send the command to all the slaves (microbits)
+- 55 -> Use RPI as a hub (send command to one microbit connected via serial and this latter send the command to all the slaves (microbits))
 - 56 -> Rasp Pi Camera
 - 60 -> Passive Infrared (PIR) Motion Sensor
 - 63 -> Security Camera (PIR motion sensor + Rasp Pi Camera)
@@ -64,7 +64,7 @@ Lecture 08:
 - 23 -> Flask (variables types)
 - 24 -> Flask (HTTP methods)
 - 26 -> Flask (Static folder and static files)
-- 29 -> Flask (rendering templates (eg. return an index.html file to be displayed in the client browser)
+- 29 -> Flask (rendering templates (eg. return an index.html file to be displayed in the client browser))
 - 30 -> Flask (session state management)
 - 32 -> Flask (build RESTful web services using swagger and connexion)
 - 36 -> Flask (Swagger configuration file)

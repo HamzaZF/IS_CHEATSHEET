@@ -1,5 +1,19 @@
-adafruit-circuitpython-bme280
+# Hardware & I2C Sensors
 adafruit-blinka
-connexion[flask,swagger-ui,uvicorn]
-paho-mqtt
+adafruit-circuitpython-bme280
+
+# Raspberry Pi GPIO & Serial
 RPi.GPIO
+pyserial
+gpiozero
+
+# Networking & Messaging
+requests
+paho-mqtt
+
+# REST API Framework
+connexion[flask,swagger-ui,uvicorn]
+
+# Data & Machine Learning
+joblib
+scikit-learn

@@ -1,0 +1,30 @@
+swagger: "2.0"
+info:
+  description: Fog processor API for aggregated sensor values
+  version: "1.0.0"
+  title: Fog Processor API
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api"
+paths:
+  /aggregates:
+    get:
+      operationId: "fog_utils.read_aggregates"
+      tags:
+        - Aggregates
+      summary: "Retrieve aggregated sensor values by device"
+      description: "Compute and return average sensor readings per device"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                devicename:
+                  type: "string"
+                averagetemp:
+                  type: "number"

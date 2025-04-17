@@ -1,0 +1,75 @@
+swagger: "2.0"
+info:
+  description: Generic sensor REST API
+  version: "1.0.0"
+  title: Sensor Data API
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api"
+
+paths:
+  /records:
+    get:
+      operationId: "globalsensor.read_records"
+      tags:
+        - Records
+      summary: "Retrieve the list of sensor records"
+      description: "Get all sensor data"
+      responses:
+        200:
+          description: "A list of sensor records"
+          schema:
+            type: "array"
+            items:
+              properties:
+                id:
+                  type: "integer"
+                devicename:
+                  type: "string"
+                value:
+                  type: "number"
+                timestamp:
+                  type: "string"
+  /record:
+    put:
+      operationId: "globalsensor.create_record"
+      tags:
+        - Records
+      summary: "Create a new sensor record"
+      description: "Insert a new record into the sensor database"
+      parameters:
+        - name: record
+          in: body
+          description: "Sensor record to create"
+          required: true
+          schema:
+            type: object
+            properties:
+              devicename:
+                type: "string"
+              value:
+                type: "number"
+              timestamp:
+                type: "string"
+      responses:
+        200:
+          description: "Record successfully created"
+  /cluster:
+    get:
+      operationId: "globalsensor.cluster_value"
+      tags:
+        - Clustering
+      summary: "Get cluster label for a sensor value"
+      description: "Predict the cluster for a new sensor reading"
+      parameters:
+        - name: value
+          in: query
+          description: "Sensor value"
+          required: true
+          type: number
+      responses:
+        200:
+          description: "Cluster label"

@@ -7,7 +7,7 @@ def pwm_led_with_pot():
     Controls a PWM LED (GPIO 21) brightness with MCP3008 pot.
     """
     pot = MCP3008(channel=0)
-    led = PWMLED(21)
+    led = PWMLED(26)
 
     print("PWM LED brightness controlled by potentiometer. Press CTRL+C to exit.")
     try:

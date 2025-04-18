@@ -12,13 +12,19 @@ basePath: "/api"
 
 # Paths supported by the server application
 paths:
-  /globallight:
+  /globaltemperature:
     get:
-      operationId: "globallight.read"
+      operationId: "globaltemperature.read"
       tags:
         - "Global Light"
       summary: "The light data structure supported by the server application"
       description: "Read the list of light"
+      # parameters:
+      #       - name: devicename
+      #         in: query
+      #         description: Name of the device
+      #         required: true
+      #         type: string  
       responses:
         200:
           description: "Successful read light list operation"
@@ -30,18 +36,18 @@ paths:
                   type: "number"
                 devicename:
                   type: "string"
-                light:
+                temperature:
                   type: "number"
                 timestamp:
                   type: "string"
     put:
-      operationId: "globallight.create"
+      operationId: "globaltemperature.create"
       tags:
         - Global Light
       summary: Create a light record in the database
       description: Create a new light in the database
       parameters:
-        - name: globallight
+        - name: globaltemperature
           in: body
           description: Light record to create
           required: True
@@ -50,7 +56,7 @@ paths:
             properties:
               devicename:
                   type: "string"
-              light:
+              temperature:
                   type: "number"
               timestamp:
                   type: "string"
@@ -58,9 +64,28 @@ paths:
         200:
           description: Successfully created light record in database
   
+  /lightclustertwo:
+    get:
+      operationId: "cluster.analyze"
+      parameters:
+            - name: brightness
+              in: query
+              required: true
+              type: number
+      responses:
+        200:
+          description: "Successful prediction"
+
+  
+
+
+
+
+
+
   /lightcluster:
     get:
-      operationId: "globallight.cluster"
+      operationId: "globaltemperature.cluster"
       tags:
         - Get cluster label of light
       summary: "Get cluster label of light"

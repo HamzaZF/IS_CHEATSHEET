@@ -12,8 +12,9 @@ radio.onReceivedString(function (receivedString) {
             commandValue = buffer[1]
             if (commandKey == "sensor") {
                 //basic.showString("S")
-                if (commandValue == "light") {
+                if (commandValue == "temp") {
                     radio.sendString("" + control.deviceName() + "=" + pins.analogReadPin(AnalogPin.P0))
+                    // radio.sendString("" + control.deviceName() + "=" + input.temperature())
                 }
             }
         }
@@ -28,8 +29,9 @@ radio.setTransmitPower(7)
 radio.setTransmitSerialNumber(true)
 basic.showIcon(IconNames.Yes)
 basic.forever(function () {
-    led.plotBarGraph(
-        pins.analogReadPin(AnalogPin.P0),
-        650
-    )
+    basic.showNumber(state)
+    // led.plotBarGraph(
+    //     pins.analogReadPin(AnalogPin.P0),
+    //     650
+    // )
 })

@@ -1,5 +1,8 @@
 import sqlite3
-from hub_config import DB_NAME, TABLE_NAME, SENSOR_FIELD
+
+DB_NAME = 'temperature.db'
+TABLE_NAME = 'temperature'
+SENSOR_FIELD = 'temperature'
 
 def init_db():
     """

@@ -50,6 +50,7 @@ radio.setTransmitPower(7)
 serial.redirectToUSB()
 basic.showIcon(IconNames.Yes)
 basic.forever(function () {
+    basic.showNumber(state)
     if (state == 1) {
         if (input.runningTime() - handshakeStartTime > 3 * 1000) {
             state = 2

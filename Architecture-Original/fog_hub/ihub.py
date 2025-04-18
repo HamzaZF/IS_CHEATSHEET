@@ -30,22 +30,22 @@ def waitResponse():
 
 
 
-def saveData(lights):
+def saveData(temperatures):
     
-    conn = sqlite3.connect('light.db')
+    conn = sqlite3.connect('temperature.db')
     c = conn.cursor()
     
-    for light in lights:
+    for temperature in temperatures:
         
-        data = light.split('=')        
+        data = temperature.split('=')        
         
-        sql = "INSERT INTO light (devicename, light, timestamp) VALUES('" + data[0] + "', " + data[1] + ", datetime('now', 'localtime'))"
+        sql = "INSERT INTO temperature (devicename, temperature, timestamp) VALUES('" + data[0] + "', " + data[1] + ", datetime('now', 'localtime'))"
         c.execute(sql)
     
     conn.commit()
     conn.close()
     
-    lights.clear()
+    temperatures.clear()
 
 
 
@@ -84,7 +84,7 @@ def rhub():
                 
                 time.sleep(1)                    
                 
-                commandToTx = 'sensor=light'                
+                commandToTx = 'sensor=temp'                
                 sendCommand('cmd:' + commandToTx)                    
                 
                 if commandToTx.startswith('sensor='):
@@ -108,13 +108,11 @@ def rhub():
 
 def cloudrelay():
     
-    conn = sqlite3.connect('light.db')
+    conn = sqlite3.connect('temperature.db')
     
-    base_uri = 'http://169.254.53.99:5000/'
-    globallight_uri = base_uri + 'api/globallight'
+    base_uri = 'http://192.168.137.1:5000/'
+    globaltemperature_uri = base_uri + 'api/globaltemperature'
     headers = {'content-type': 'application/json'}
-    
-    
     
     while True:
     
@@ -123,22 +121,22 @@ def cloudrelay():
         print('Relaying data to cloud server...')
                 
         c = conn.cursor()
-        c.execute('SELECT id, devicename, light, timestamp FROM light WHERE tocloud = 0')
+        c.execute('SELECT id, devicename, temperature, timestamp FROM temperature WHERE tocloud = 0')
         results = c.fetchall()
         c = conn.cursor()
                 
         for result in results:
                     
-            print('Relaying id={}; devicename={}; light={}; timestamp={}'.format(result[0], result[1], result[2], result[3]))
+            print('Relaying id={}; devicename={}; temperature={}; timestamp={}'.format(result[0], result[1], result[2], result[3]))
             
-            glight = {
+            gtemperature = {
                 'devicename':result[1],
-                'light':result[2],
+                'temperature':result[2],
                 'timestamp':result[3]
             }
-            req = requests.put(globallight_uri, headers = headers, data = json.dumps(glight))
+            req = requests.put(globaltemperature_uri, headers = headers, data = json.dumps(gtemperature))
             
-            c.execute('UPDATE light SET tocloud = 1 WHERE id = ' + str(result[0]))
+            c.execute('UPDATE temperature SET tocloud = 1 WHERE id = ' + str(result[0]))
         
         conn.commit()
 
@@ -146,15 +144,15 @@ def cloudrelay():
 
 def on_message(client, userdata, msg):
     
-    smartlight = str(msg.payload.decode())
-    print('Smartlight command subscribed: ' + smartlight)
+    great = str(msg.payload.decode())
+    print('Great command subscribed: ' + great)
     
-    if smartlight == 'on':
-        
+    if great == 'on':
+        print("ON")
         GPIO.output(redLedPin, True)
         
     else:
-    
+        print("OFF")
         GPIO.output(redLedPin, False)
 
 
@@ -181,11 +179,25 @@ def init():
     GPIO.setmode(GPIO.BOARD)
     
     global redLedPin
-    redLedPin = 11
+    redLedPin = 37
     GPIO.setup(redLedPin, GPIO.OUT)
     GPIO.output(redLedPin, False)
 
 
+def mqtt_stuff():
+        
+    broker = 'broker.emqx.io'
+    port = 1883
+    topic = "/is4151-is5451/Hamza/NUS/19_04/great"
+    # client_id = f'python-mqtt-{random.randint(0, 10000)}'
+    #username = 'emqx'
+    #password = 'public'
+    client = mqtt.Client()
+    #client.username_pw_set(username, password)
+    client.connect(broker, port)    
+    client.subscribe(topic)
+    client.on_message = on_message
+    client.loop_forever()
 
 def main():
     
@@ -193,7 +205,8 @@ def main():
     
     thread.start_new_thread(rhub, ())
     thread.start_new_thread(cloudrelay, ())
-    thread.start_new_thread(smartlight, ())
+    thread.start_new_thread(mqtt_stuff, ())
+    # thread.start_new_thread(smartlight, ())
     
     print('Program running... Press CTRL+C to exit')
     

@@ -1,5 +1,13 @@
 import sqlite3
-from cloud_config import DB_NAME, TABLE_NAME, FIELD_DEVICE, FIELD_SENSOR, FIELD_TIMESTAMP, FIELD_TOCLOUD
+
+# DB_NAME, TABLE_NAME, FIELD_DEVICE, FIELD_SENSOR, FIELD_TIMESTAMP, FIELD_TOCLOUD
+
+DB_NAME = 'temperature.db'
+TABLE_NAME = 'temperature'
+FIELD_DEVICE = 'devicename'
+FIELD_SENSOR = 'temperature'
+FIELD_TIMESTAMP = 'timestamp'
+FIELD_TOCLOUD = 'tocloud'
 
 def init_db():
     """
